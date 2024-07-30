@@ -27,7 +27,8 @@ const scheduleEmail = (email) => {
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
-            }
+            },
+            debug:true
         });
 
         let mailOptions = {
@@ -81,5 +82,7 @@ app.delete('/scheduled-emails/:id', async (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+    const scheduleTime = new Date(Date.now() + 10000).toISOString(); // 5 seconds into the future
+console.log(scheduleTime); // "2024-07-30T12:35:01.789Z" (example)
     
 });
